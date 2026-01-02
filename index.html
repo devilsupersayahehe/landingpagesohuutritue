@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Công Ty Luật ACC - Sở Hữu Trí Tuệ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9fafb;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #a73737; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #7a2828; }
+
+        /* --- Button Shine Effect --- */
+        .btn-shine { position: relative; overflow: hidden; }
+        .btn-shine::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.6), transparent);
+            transform: skewX(-25deg); transition: none;
+        }
+        .btn-shine:hover::after { left: 200%; transition: left 0.7s ease-in-out; }
+
+        /* --- Animations --- */
+        @keyframes shake-zalo {
+            0%, 25%, 100% { transform: rotate(0deg) scale(1); }
+            5% { transform: rotate(-10deg) scale(1.1); }
+            10% { transform: rotate(10deg) scale(1.1); }
+            15% { transform: rotate(-10deg) scale(1.1); }
+            20% { transform: rotate(10deg) scale(1.1); }
+        }
+        @keyframes pop-tooltip-zalo {
+            0%, 30%, 100% { opacity: 0; transform: translateX(40px) translateY(-50%) scale(0.8); visibility: hidden; }
+            2%, 25% { opacity: 1; transform: translateX(65px) translateY(-50%) scale(1); visibility: visible; }
+        }
+        @keyframes shake-phone {
+            0%, 12.5%, 100% { transform: rotate(0deg) scale(1); }
+            2.5% { transform: rotate(-10deg) scale(1.1); }
+            5% { transform: rotate(10deg) scale(1.1); }
+            7.5% { transform: rotate(-10deg) scale(1.1); }
+            10% { transform: rotate(10deg) scale(1.1); }
+        }
+        @keyframes pop-tooltip-phone {
+            0%, 15%, 100% { opacity: 0; transform: translateX(40px) translateY(-50%) scale(0.8); visibility: hidden; }
+            1%, 12% { opacity: 1; transform: translateX(65px) translateY(-50%) scale(1); visibility: visible; }
+        }
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in-left {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fade-in-right {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes grow-bar {
+            from { height: 0; opacity: 0.5; }
+            to { opacity: 1; }
+        }
+
+        .animate-zalo-cycle { animation: shake-zalo 5s infinite ease-in-out; }
+        .animate-zalo-tooltip { animation: pop-tooltip-zalo 5s infinite ease-in-out; }
+        .animate-phone-cycle { animation: shake-phone 10s infinite ease-in-out; }
+        .animate-phone-tooltip { animation: pop-tooltip-phone 10s infinite ease-in-out; }
+        .animate-fade-in-up { animation: fade-in-up 0.5s ease-out forwards; }
+        .animate-fade-in-left { animation: fade-in-left 0.7s ease-out forwards; }
+        .animate-fade-in-right { animation: fade-in-right 0.7s ease-out forwards; }
+        
+        /* Bar Chart Animations */
+        .bar-animate { animation: grow-bar 1s ease-out forwards; transform-origin: bottom; }
+        .bar-delay-1 { animation-delay: 0.2s; }
+        .bar-delay-2 { animation-delay: 0.4s; }
+        .bar-delay-3 { animation-delay: 0.6s; }
+
+        .group:hover .group-hover\:visible {
+            opacity: 1 !important; visibility: visible !important;
+            transform: translateX(65px) translateY(-50%) scale(1) !important;
+            transition: all 0.3s ease;
+        }
+
+        /* --- Utility Classes for Gradients --- */
+        .bg-primary-gradient { background: linear-gradient(to right, #7a2828, #a73737); }
+        .text-gradient { background: linear-gradient(to right, #7a2828, #a73737); -webkit-background-clip: text; color: transparent; }
+    </style>
+</head>
+<body class="text-gray-800 font-sans relative">
+
+    <div class="md:hidden fixed top-0 left-0 w-full z-40 bg-white shadow-md p-4 flex justify-between items-center">
+        <img src="https://congtyluatacc.vn/wp-content/uploads/2025/07/Ban-sao-cua-Ban-sao-cua-CONG-TY-LUAT-ACC-DONG-HANH-PHAP-LY-CUNG-BAN.png" 
+             alt="Logo Công Ty Luật ACC" class="h-10 object-contain" />
+        <a href="tel:19003330" class="bg-primary-gradient text-white px-4 py-2 rounded-full text-sm font-bold btn-shine">
+            Gọi 1900 3330
+        </a>
+    </div>
+
+    <div class="fixed bottom-6 left-6 z-50 flex flex-col gap-5 items-start">
+        <div class="relative group">
+            <a href="https://zalo.me/2171133625094125529" target="_blank" rel="noreferrer"
+               class="flex flex-col items-center justify-center w-14 h-14 bg-blue-600 rounded-full shadow-lg animate-zalo-cycle hover:scale-110 transition-transform duration-300 border-2 border-white z-20 relative">
+                <span class="text-white font-medium text-[12px] leading-tight">Zalo</span>
+            </a>
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-blue-800 text-xs font-bold px-3 py-2 rounded-lg shadow-xl whitespace-nowrap animate-zalo-tooltip border border-blue-100 group-hover:visible z-10">
+                Nhận báo giá ngay
+                <div class="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-[6px] border-transparent border-r-white"></div>
+            </div>
+        </div>
+        <div class="relative group">
+            <a href="tel:19003330" class="flex items-center justify-center w-14 h-14 bg-[#a73737] rounded-full shadow-lg animate-phone-cycle hover:scale-110 transition-transform duration-300 border-2 border-white z-20 relative" style="animation-delay: 2.5s;">
+                <i data-lucide="phone" class="text-white w-7 h-7"></i>
+            </a>
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 bg-white text-[#a73737] text-xs font-bold px-3 py-2 rounded-lg shadow-xl whitespace-nowrap animate-phone-tooltip border border-red-100 group-hover:visible z-10" style="animation-delay: 2.5s;">
+                Liên hệ tư vấn miễn phí
+                <div class="absolute left-0 top-1/2 -translate-x-full -translate-y-1/2 border-[6px] border-transparent border-r-white"></div>
+            </div>
+        </div>
+    </div>
+
+    <button id="scrollToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="hidden fixed bottom-6 right-6 z-50 p-3 bg-black/30 backdrop-blur-md border border-white/20 text-white rounded-full shadow-lg hover:bg-[#a73737] transition-all duration-300 transform hover:-translate-y-1">
+        <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <section class="relative pt-24 pb-12 md:pt-20 md:pb-16 overflow-hidden min-h-auto md:min-h-[600px] flex items-center">
+        <div class="absolute inset-0 z-0">
+            <img src="https://congtyluatacc.vn/wp-content/uploads/2026/01/still-life-world-intellectual-property-day-1-scaled.jpg" alt="Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-white/85"></div>
+            <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
+        </div>
+        <div class="container mx-auto px-8 md:px-16 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="flex-1 space-y-8 animate-fade-in-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-red-50 rounded-full text-[#a73737] font-bold text-sm border border-red-100 shadow-sm mb-4">
+                        <i data-lucide="check-circle" class="w-4 h-4 text-[#a73737]"></i>
+                        Đối tác pháp lý tin cậy
+                    </div>
+                    
+                    <h1 class="text-2xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 drop-shadow-sm mt-0">
+                        <span class="block whitespace-nowrap">Bảo Vệ <span class="text-gradient">Sở Hữu Trí Tuệ</span></span>
+                        <span class="block whitespace-nowrap">Vững Bước Tương Lai</span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-800 leading-relaxed font-medium text-justify">
+                        Giải pháp Sở hữu trí tuệ giúp bảo vệ tối đa quyền lợi pháp lý và giá trị thương hiệu. Tại công ty Luật ACC, chúng tôi cung cấp dịch vụ tư vấn và đăng ký sở hữu trí tuệ chuyên nghiệp, bao gồm bảo hộ nhãn hiệu, sáng chế, bản quyền tác giả và giải quyết các tranh chấp. Với đội ngũ luật sư giàu kinh nghiệm, Công ty Luật ACC đồng hành cùng doanh nghiệp từ việc xây dựng chiến lược bảo hộ đến thực thi quyền sở hữu trí tuệ.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="tel:19003330" class="bg-primary-gradient text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition flex items-center gap-2 btn-shine">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                            Hotline: 1900 3330
+                        </a>
+                        <a href="https://zalo.me/2171133625094125529" target="_blank" rel="noreferrer" class="bg-white border-2 border-[#a73737] text-[#a73737] px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition flex items-center gap-2 btn-shine">
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                            Đặt Lịch Ngay
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mt-8 pt-6 border-t border-gray-400/30">
+                        <div>
+                            <p class="text-sm text-gray-600 uppercase font-semibold">Di động</p>
+                            <p class="text-xl font-bold text-[#a73737]">084.696.7979</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600 uppercase font-semibold">Email</p>
+                            <p class="text-xl font-bold text-[#a73737]">info@accgroup.vn</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-1 relative animate-fade-in-right hidden md:block">
+                    <div class="relative z-10 grid grid-cols-2 gap-4">
+                        <div class="bg-white/90 p-5 rounded-2xl shadow-xl border-l-4 border-[#7a2828] transform translate-y-4 backdrop-blur-sm">
+                            <i data-lucide="shield" class="text-[#7a2828] w-10 h-10 mb-3"></i>
+                            <h3 class="font-bold text-lg mb-1">Chuyên Nghiệp</h3>
+                            <p class="text-gray-600 text-xs">Đội ngũ luật sư giàu kinh nghiệm.</p>
+                        </div>
+                        <div class="bg-[#a73737] p-5 rounded-2xl shadow-xl text-white">
+                            <i data-lucide="award" class="text-white w-10 h-10 mb-3"></i>
+                            <h3 class="font-bold text-lg mb-1">Uy Tín</h3>
+                            <p class="text-white/80 text-xs">Đối tác pháp lý chiến lược.</p>
+                        </div>
+                        <div class="bg-[#a73737] p-5 rounded-2xl shadow-xl text-white transform translate-y-4">
+                            <i data-lucide="zap" class="text-white w-10 h-10 mb-3"></i>
+                            <h3 class="font-bold text-lg mb-1">Nhanh Chóng</h3>
+                            <p class="text-white/80 text-xs">Thủ tục gọn nhẹ, tiết kiệm.</p>
+                        </div>
+                        <div class="bg-white/90 p-5 rounded-2xl shadow-xl border-l-4 border-[#7a2828] backdrop-blur-sm">
+                            <i data-lucide="lock" class="text-[#7a2828] w-10 h-10 mb-3"></i>
+                            <h3 class="font-bold text-lg mb-1">Bảo Mật</h3>
+                            <p class="text-gray-600 text-xs">Cam kết bảo mật thông tin.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-8 md:px-16">
+            <div class="flex flex-col items-center mb-8 group cursor-default">
+                <span class="bg-[#a73737] text-white px-6 py-2 rounded-full text-sm font-bold tracking-widest shadow-md mb-4 transform transition-transform duration-300 hover:scale-105">
+                    GIỚI THIỆU
+                </span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 uppercase relative inline-block text-center">
+                    VỀ CÔNG TY LUẬT ACC
+                </h2>
+                <div class="w-24 h-1 bg-gray-200 mx-auto rounded-full mt-4"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="space-y-6 text-gray-700 leading-relaxed text-justify">
+                    <p>
+                        <span class="font-bold text-[#a73737]">Công ty Luật ACC</span> là một trong những đơn vị cung cấp dịch vụ pháp lý uy tín và chuyên nghiệp hàng đầu tại Việt Nam. Chúng tôi mang đến giải pháp pháp lý toàn diện cho cá nhân và doanh nghiệp trong các lĩnh vực trọng yếu như: Tố tụng, Sở hữu trí tuệ, Đất đai, Đầu tư nước ngoài và Giấy phép con.
+                    </p>
+                    <p>
+                        Với phương châm <span class="italic font-medium">“Đồng hành pháp lý cùng bạn”</span>, ACC tự hào sở hữu đội ngũ luật sư được đào tạo bài bản trong và ngoài nước, cùng hệ thống văn phòng hiện đại tại Hà Nội, TP. Hồ Chí Minh, Đà Nẵng và nhiều tỉnh thành trên cả nước. Chúng tôi cam kết không chỉ tư vấn mà còn là đối tác chiến lược, giúp khách hàng phòng ngừa rủi ro và phát triển bền vững.
+                    </p>
+                    <p>
+                        Kết hợp nền tảng công nghệ hiện đại và sự am hiểu sâu sắc pháp luật, ACC xử lý nhanh chóng, chính xác mọi thủ tục pháp lý. Điểm khác biệt của chúng tôi là khả năng cung cấp giải pháp trọn gói, tối ưu lợi ích lâu dài và hỗ trợ khách hàng đạt được mục tiêu kinh doanh trong môi trường biến động.
+                    </p>
+                </div>
+                <div class="relative group sticky top-24">
+                    <div class="absolute -inset-4 border-2 border-[#a73737]/20 rounded-2xl transform rotate-2 z-0"></div>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-[#a73737] to-transparent opacity-10 rounded-xl z-10 mix-blend-multiply"></div>
+                    <img src="https://congtyluatacc.vn/wp-content/uploads/2026/01/still-life-world-intellectual-property-day-scaled.jpg" alt="Về Công Ty Luật ACC" class="relative rounded-xl shadow-2xl w-full h-auto object-cover z-0 transform transition duration-500 group-hover:scale-[1.02]" />
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-lg shadow-xl border-l-4 border-[#a73737] z-20 hidden md:block">
+                        <div class="flex items-center gap-3">
+                            <div class="bg-red-50 p-2 rounded-full">
+                                <i data-lucide="users" class="text-[#a73737] w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 uppercase font-bold">Khách Hàng</p>
+                                <p class="text-lg font-bold text-gray-900">10.000+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-8 md:px-16">
+            <div class="flex justify-center mb-8">
+                <h2 class="bg-[#a73737] text-white px-8 py-4 rounded-full text-xl md:text-2xl font-bold uppercase tracking-wide shadow-lg transform transition-transform duration-300 hover:scale-105 text-center">
+                    DỊCH VỤ NỔI BẬT
+                </h2>
+            </div>
+            <div class="max-w-4xl mx-auto mb-8 text-center text-gray-700 leading-relaxed text-justify">
+                <p class="mb-4">
+                    Tại Công ty Luật ACC, chúng tôi tự hào cung cấp các dịch vụ pháp lý toàn diện và uy tín, được thiết kế để đáp ứng mọi nhu cầu của khách hàng, từ cá nhân đến doanh nghiệp, giúp bảo vệ quyền lợi và tối ưu hóa lợi ích pháp lý trong mọi tình huống.
+                </p>
+                <p class="mb-4 font-semibold">Công ty Luật ACC cung cấp dịch vụ về sở hữu trí tuệ, gồm:</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-t-4 border-transparent hover:border-[#a73737] group text-center flex flex-col items-center">
+                    <div class="mb-4 flex justify-center transform group-hover:scale-110 transition duration-300">
+                        <i data-lucide="award" class="text-[#a73737] w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 group-hover:text-[#a73737] transition">Đăng Ký Nhãn Hiệu</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-t-4 border-transparent hover:border-[#a73737] group text-center flex flex-col items-center">
+                    <div class="mb-4 flex justify-center transform group-hover:scale-110 transition duration-300">
+                        <i data-lucide="lightbulb" class="text-[#a73737] w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 group-hover:text-[#a73737] transition">Sáng Chế & GPHI</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-t-4 border-transparent hover:border-[#a73737] group text-center flex flex-col items-center">
+                    <div class="mb-4 flex justify-center transform group-hover:scale-110 transition duration-300">
+                        <i data-lucide="pen-tool" class="text-[#a73737] w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 group-hover:text-[#a73737] transition">Kiểu Dáng Công Nghiệp</h3>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-t-4 border-transparent hover:border-[#a73737] group text-center flex flex-col items-center">
+                    <div class="mb-4 flex justify-center transform group-hover:scale-110 transition duration-300">
+                        <i data-lucide="file-text" class="text-[#a73737] w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 group-hover:text-[#a73737] transition">Quyền Tác Giả</h3>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-sm border-l-4 border-[#a73737] max-w-5xl mx-auto">
+                <ul class="list-disc pl-5 space-y-2 text-gray-700 mb-6 grid md:grid-cols-2 gap-x-8">
+                    <li>Dịch vụ đăng ký nhãn hiệu</li>
+                    <li>Dịch vụ đăng ký sáng chế và giải pháp hữu ích</li>
+                    <li>Dịch vụ đăng ký kiểu dáng công nghiệp</li>
+                    <li>Dịch vụ quyền tác giả và các quyền liên quan</li>
+                </ul>
+                <p class="text-lg text-[#a73737] font-medium text-center italic mb-6">
+                    "Chọn ACC, thương hiệu của bạn sẽ được bảo vệ toàn diện, vững chắc và phát triển bền vững trên thị trường - chúng tôi đồng hành cùng bạn trong mọi bước đi để khẳng định giá trị độc quyền của thương hiệu."
+                </p>
+                <div class="flex justify-center">
+                    <a href="#contact" class="bg-primary-gradient text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transition flex items-center gap-2 btn-shine">
+                        Tìm Hiểu Thêm <i data-lucide="arrow-right" class="w-[18px] h-[18px]"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-14 relative bg-[#1a1a1a] text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://congtyluatacc.vn/wp-content/uploads/2026/01/gradient-technology-background-scaled.jpg" alt="Why Choose Us Background" class="w-full h-full object-cover opacity-10">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#1a1a1a] via-transparent to-[#1a1a1a]"></div>
+        </div>
+        <div class="container mx-auto px-8 md:px-16 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="text-left animate-fade-in-left">
+                    <div class="inline-block mb-4">
+                        <span class="text-[#a73737] font-bold tracking-widest uppercase text-sm border-b-2 border-[#a73737] pb-1">Vì Sao Chọn ACC?</span>
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+                        Đối Tác Pháp Lý <br/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#a73737] to-red-500">Tin Cậy & Hiệu Quả</span>
+                    </h2>
+                    <p class="text-gray-400 mb-8 text-lg leading-relaxed text-justify">
+                        Khi lựa chọn một đối tác pháp lý, điều quan trọng nhất là tin tưởng vào năng lực và kinh nghiệm. ACC cung cấp giải pháp pháp lý toàn diện, không chỉ giải quyết vấn đề trước mắt mà còn tối ưu lợi ích lâu dài cho doanh nghiệp của bạn.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="tel:19003330" class="bg-[#a73737] hover:bg-red-700 text-white px-8 py-3 rounded-lg font-bold transition flex items-center justify-center gap-2 shadow-lg btn-shine">
+                            <i data-lucide="phone" class="w-5 h-5"></i> 1900 3330
+                        </a>
+                        <a href="https://zalo.me/2171133625094125529" target="_blank" rel="noreferrer" class="border border-white/20 hover:bg-white/10 text-white px-8 py-3 rounded-lg font-bold transition flex items-center justify-center gap-2">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i> Chat Zalo
+                        </a>
+                    </div>
+                </div>
+                <div class="space-y-6 animate-fade-in-right">
+                    <div class="flex gap-5 p-4 rounded-xl hover:bg-white/5 transition duration-300 border-b border-white/5 last:border-0 group">
+                        <div class="flex-shrink-0 w-14 h-14 rounded-full bg-[#a73737]/20 flex items-center justify-center text-[#a73737] group-hover:bg-[#a73737] group-hover:text-white transition duration-300">
+                            <i data-lucide="users" class="w-7 h-7"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-1 text-white group-hover:text-[#a73737] transition duration-300">Chuyên Gia Hàng Đầu</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Đội ngũ luật sư giàu kinh nghiệm, đào tạo bài bản trong và ngoài nước.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 p-4 rounded-xl hover:bg-white/5 transition duration-300 border-b border-white/5 last:border-0 group">
+                        <div class="flex-shrink-0 w-14 h-14 rounded-full bg-[#a73737]/20 flex items-center justify-center text-[#a73737] group-hover:bg-[#a73737] group-hover:text-white transition duration-300">
+                            <i data-lucide="shield" class="w-7 h-7"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-1 text-white group-hover:text-[#a73737] transition duration-300">Giải Pháp Toàn Diện</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Tư vấn chiến lược tổng thể, tối ưu lợi ích lâu dài cho khách hàng.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 p-4 rounded-xl hover:bg-white/5 transition duration-300 border-b border-white/5 last:border-0 group">
+                        <div class="flex-shrink-0 w-14 h-14 rounded-full bg-[#a73737]/20 flex items-center justify-center text-[#a73737] group-hover:bg-[#a73737] group-hover:text-white transition duration-300">
+                            <i data-lucide="zap" class="w-7 h-7"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-1 text-white group-hover:text-[#a73737] transition duration-300">Tốc Độ & Hiệu Quả</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Quy trình tối ưu giúp tiết kiệm thời gian và chi phí tối đa.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5 p-4 rounded-xl hover:bg-white/5 transition duration-300 border-b border-white/5 last:border-0 group">
+                        <div class="flex-shrink-0 w-14 h-14 rounded-full bg-[#a73737]/20 flex items-center justify-center text-[#a73737] group-hover:bg-[#a73737] group-hover:text-white transition duration-300">
+                            <i data-lucide="lock" class="w-7 h-7"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-1 text-white group-hover:text-[#a73737] transition duration-300">Bảo Mật Tuyệt Đối</h4>
+                            <p class="text-gray-400 text-sm leading-relaxed">Cam kết bảo mật thông tin và bí mật kinh doanh của khách hàng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-8 md:px-16">
+            <div class="flex justify-center mb-8">
+                <h2 class="bg-[#a73737] text-white px-8 py-4 rounded-full text-xl md:text-2xl font-bold uppercase tracking-wide shadow-lg transform transition-transform duration-300 hover:scale-105 text-center">
+                    QUY TRÌNH LÀM VIỆC
+                </h2>
+            </div>
+            <p class="text-center text-gray-600 mb-8 max-w-4xl mx-auto">
+                Tại Công ty Luật ACC, chúng tôi luôn chú trọng xây dựng một quy trình làm việc chuyên nghiệp, minh bạch và hiệu quả, giúp khách hàng an tâm từ khi bắt đầu đến khi kết thúc dịch vụ.
+            </p>
+            <div class="space-y-6">
+                <div class="flex flex-col md:flex-row gap-6 bg-gray-50 p-6 rounded-xl hover:shadow-lg transition border-l-4 border-[#a73737]">
+                    <div class="md:w-32 flex-shrink-0">
+                        <span class="inline-block bg-[#a73737] text-white px-4 py-2 rounded-full font-bold text-sm">Bước 1</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Tiếp nhận thông tin và tư vấn ban đầu</h3>
+                        <p class="text-gray-600 text-justify">Khách hàng liên hệ ACC để trình bày nhu cầu và vấn đề pháp lý. Đội ngũ tư vấn sẽ lắng nghe kỹ lưỡng, phân tích tình huống và cung cấp giải pháp sơ bộ.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 bg-gray-50 p-6 rounded-xl hover:shadow-lg transition border-l-4 border-[#a73737]">
+                    <div class="md:w-32 flex-shrink-0">
+                        <span class="inline-block bg-[#a73737] text-white px-4 py-2 rounded-full font-bold text-sm">Bước 2</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Phân tích và đánh giá chi tiết</h3>
+                        <p class="text-gray-600 text-justify">Luật sư và chuyên gia pháp lý của ACC tiến hành nghiên cứu hồ sơ, pháp luật và các quy định liên quan, đánh giá khả năng thành công, rủi ro và phương án tối ưu.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 bg-gray-50 p-6 rounded-xl hover:shadow-lg transition border-l-4 border-[#a73737]">
+                    <div class="md:w-32 flex-shrink-0">
+                        <span class="inline-block bg-[#a73737] text-white px-4 py-2 rounded-full font-bold text-sm">Bước 3</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Lập kế hoạch và ký kết hợp đồng</h3>
+                        <p class="text-gray-600 text-justify">Dựa trên kết quả đánh giá, ACC sẽ soạn thảo kế hoạch hành động cụ thể cùng các điều khoản dịch vụ minh bạch. Hai bên tiến hành ký kết hợp đồng.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 bg-gray-50 p-6 rounded-xl hover:shadow-lg transition border-l-4 border-[#a73737]">
+                    <div class="md:w-32 flex-shrink-0">
+                        <span class="inline-block bg-[#a73737] text-white px-4 py-2 rounded-full font-bold text-sm">Bước 4</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Thực hiện và theo dõi vụ việc</h3>
+                        <p class="text-gray-600 text-justify">ACC triển khai các dịch vụ pháp lý, bao gồm tư vấn, soạn thảo hồ sơ, đại diện khách hàng, đồng thời cập nhật tiến độ thường xuyên.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 bg-gray-50 p-6 rounded-xl hover:shadow-lg transition border-l-4 border-[#a73737]">
+                    <div class="md:w-32 flex-shrink-0">
+                        <span class="inline-block bg-[#a73737] text-white px-4 py-2 rounded-full font-bold text-sm">Bước 5</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Hoàn tất và bàn giao kết quả</h3>
+                        <p class="text-gray-600 text-justify">Sau khi kết thúc vụ việc, ACC sẽ bàn giao đầy đủ hồ sơ, văn bản pháp lý và hướng dẫn các bước tiếp theo cho khách hàng.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6 bg-gray-50 p-6 rounded-xl hover:shadow-lg transition border-l-4 border-[#a73737]">
+                    <div class="md:w-32 flex-shrink-0">
+                        <span class="inline-block bg-[#a73737] text-white px-4 py-2 rounded-full font-bold text-sm">Bước 6</span>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Hỗ trợ sau dịch vụ</h3>
+                        <p class="text-gray-600 text-justify">Ngay cả sau khi kết thúc dịch vụ, ACC vẫn duy trì tư vấn hỗ trợ pháp lý bổ sung và giải đáp thắc mắc cho khách hàng.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="mt-8 text-center text-gray-700 italic font-medium mb-8">
+                Với quy trình làm việc bài bản và tận tâm, ACC cam kết đem đến cho khách hàng trải nghiệm dịch vụ pháp lý chuyên nghiệp, minh bạch và hiệu quả.
+            </p>
+            <div class="flex justify-center">
+                <a href="#contact" class="bg-[#a73737] text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-[#8a2a2a] shadow-lg transition transform hover:-translate-y-1 btn-shine flex items-center gap-2">
+                    <i data-lucide="award" class="text-yellow-400"></i> Nhận Ưu Đãi ngay hôm nay
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-8 md:px-16">
+            <div class="text-center mb-8 cursor-default">
+                <h2 class="text-3xl md:text-4xl font-bold uppercase mb-4 text-gradient inline-block relative">
+                    5. Một số câu hỏi thường gặp
+                </h2>
+                <div class="w-24 h-1 bg-[#a73737] mx-auto rounded-full mt-1"></div>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="bg-white rounded-2xl shadow-lg p-6 h-fit">
+                    <div class="border-b border-gray-200 last:border-0 accordion-item">
+                        <button class="w-full py-4 flex justify-between items-center text-left focus:outline-none hover:bg-gray-50 transition px-4" onclick="toggleAccordion(this)">
+                            <span class="font-semibold text-gray-800 text-lg">Nhãn hiệu mất bao lâu để được cấp?</span>
+                            <i data-lucide="chevron-down" class="text-gray-400 icon-chevron"></i>
+                        </button>
+                        <div class="overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out accordion-content">
+                            <div class="p-4 pt-0 text-gray-600 leading-relaxed text-justify whitespace-pre-line">
+                                Tổng thời gian đăng ký nhãn hiệu từ lúc nộp hồ sơ đến khi được cấp văn bằng bảo hộ theo quy định của pháp luật là 12 tháng.
+                                Tuy nhiên trên thực tế, thời gian đăng ký nhãn hiệu có thể kéo dài lên tới 18 - 24 tháng bởi các lý khách quan.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-b border-gray-200 last:border-0 accordion-item">
+                        <button class="w-full py-4 flex justify-between items-center text-left focus:outline-none hover:bg-gray-50 transition px-4" onclick="toggleAccordion(this)">
+                            <span class="font-semibold text-gray-800 text-lg">Chi phí đăng ký bản quyền là bao nhiêu?</span>
+                            <i data-lucide="chevron-down" class="text-gray-400 icon-chevron"></i>
+                        </button>
+                        <div class="overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out accordion-content">
+                            <div class="p-4 pt-0 text-gray-600 leading-relaxed text-justify whitespace-pre-line">
+                                Chi phí đăng ký sở hữu trí tuệ được quy định tại Thông tư 263/2016/TT-BTC, có sửa đổi, bổ sung bởi Thông tư 52/2021/TT-BTC và Thông tư 22/2024/TT-BTC. Một số mức phí phổ biến hiện nay bao gồm:
+                                - Nhãn hiệu: khoảng 1,5 đến 3 triệu đồng cho mỗi nhóm hàng hóa hoặc dịch vụ.
+                                - Sáng chế/giải pháp hữu ích: từ 6 đến 15 triệu đồng, tùy thuộc vào số trang bản mô tả và số điểm bảo hộ độc lập.
+                                - Kiểu dáng công nghiệp: từ 2 đến 5 triệu đồng.
+                                - Bản quyền tác giả: chỉ từ 100.000 đến 600.000 đồng.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-b border-gray-200 last:border-0 accordion-item">
+                        <button class="w-full py-4 flex justify-between items-center text-left focus:outline-none hover:bg-gray-50 transition px-4" onclick="toggleAccordion(this)">
+                            <span class="font-semibold text-gray-800 text-lg">Làm thế nào để bảo hộ nhãn hiệu quốc tế?</span>
+                            <i data-lucide="chevron-down" class="text-gray-400 icon-chevron"></i>
+                        </button>
+                        <div class="overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out accordion-content">
+                            <div class="p-4 pt-0 text-gray-600 leading-relaxed text-justify whitespace-pre-line">
+                                Để bảo hộ nhãn hiệu quốc tế, trước tiên bạn cần đăng ký nhãn hiệu tại quốc gia gốc, sau đó nộp đơn quốc tế thông qua Hệ thống Madrid của Tổ chức Sở hữu Trí tuệ Thế giới (WIPO), trong đó chỉ định các quốc gia muốn bảo hộ.
+                                WIPO sẽ kiểm tra hình thức hồ sơ và chuyển đơn tới từng quốc gia để xét duyệt theo luật nội địa.
+                                Khi được chấp thuận, nhãn hiệu sẽ được bảo hộ tại các quốc gia đó, đồng thời bạn cần theo dõi, gia hạn và duy trì quyền sử dụng định kỳ để bảo vệ hiệu lực lâu dài.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-b border-gray-200 last:border-0 accordion-item">
+                        <button class="w-full py-4 flex justify-between items-center text-left focus:outline-none hover:bg-gray-50 transition px-4" onclick="toggleAccordion(this)">
+                            <span class="font-semibold text-gray-800 text-lg">Xâm phạm bản quyền bị xử phạt thế nào?</span>
+                            <i data-lucide="chevron-down" class="text-gray-400 icon-chevron"></i>
+                        </button>
+                        <div class="overflow-hidden max-h-0 opacity-0 transition-all duration-300 ease-in-out accordion-content">
+                            <div class="p-4 pt-0 text-gray-600 leading-relaxed text-justify whitespace-pre-line">
+                                Căn cứ Nghị định 131/2013/NĐ-CP (sửa đổi, bổ sung bởi Nghị định 28/2017/NĐ-CP), các hành vi vi phạm bản quyền và mức xử phạt được quy định như sau.
+                                Đối với xâm phạm quyền bảo vệ sự toàn vẹn của tác phẩm, hành vi tự ý sửa chữa, cắt xén tác phẩm gây phương hại đến danh dự và uy tín của tác giả bị phạt từ 3–5 triệu đồng, còn hành vi xuyên tạc tác phẩm bị phạt từ 5–10 triệu đồng, đồng thời bị buộc cải chính thông tin công khai và dỡ bỏ hoặc tiêu hủy bản sao vi phạm.
+                                Đối với xâm phạm quyền sao chép tác phẩm, hành vi sao chép mà không được phép của chủ sở hữu quyền tác giả bị phạt từ 15–35 triệu đồng và buộc dỡ bỏ hoặc tiêu hủy bản sao vi phạm. Lưu ý, mức xử phạt trên áp dụng cho cá nhân; đối với tổ chức, khung tiền phạt gấp đôi.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-gray-100">
+                        <a href="https://zalo.me/2171133625094125529" target="_blank" rel="noreferrer" 
+                           class="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl font-bold shadow-md hover:shadow-lg hover:from-blue-600 hover:to-blue-700 transition transform hover:-translate-y-0.5">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            ĐẶT THÊM CÂU HỎI GIÀNH CHO LUẬT SƯ
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-lg p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-6 text-center text-gray-800">
+                        Mức Xử Phạt Vi Phạm Bản Quyền (Triệu VNĐ)
+                    </h3>
+                    
+                    <div class="relative w-full h-[320px] pt-8 px-4 flex items-end justify-between border-b-2 border-l-2 border-gray-200">
+                        
+                        <div class="absolute -left-0 top-0 h-full flex flex-col justify-between text-xs text-gray-400 font-medium py-2 pointer-events-none transform -translate-x-full pr-2">
+                            <span>35tr</span>
+                            <span>25tr</span>
+                            <span>15tr</span>
+                            <span>0tr</span>
+                        </div>
+                        
+                        <div class="absolute inset-0 flex flex-col justify-between pointer-events-none z-0 px-4">
+                            <div class="w-full h-px bg-gray-100 border-t border-dashed border-gray-300"></div>
+                            <div class="w-full h-px bg-gray-100 border-t border-dashed border-gray-300"></div>
+                            <div class="w-full h-px bg-gray-100 border-t border-dashed border-gray-300"></div>
+                            <div class="w-full h-px bg-transparent"></div>
+                        </div>
+
+                        <div class="relative group w-1/4 mx-2 flex flex-col justify-end h-full z-10 cursor-pointer">
+                            <div class="w-full bg-[#7a2828] rounded-t-lg transition-all duration-300 hover:opacity-80 bar-animate bar-delay-1 relative shadow-md" style="height: 11.4%;">
+                                <div class="absolute -top-12 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs font-bold py-1 px-3 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50">
+                                    TB: 4 Triệu
+                                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full border-4 border-transparent border-t-gray-800"></div>
+                                </div>
+                            </div>
+                            <span class="mt-3 text-xs md:text-sm font-bold text-gray-600 text-center block">Sửa chữa</span>
+                        </div>
+
+                        <div class="relative group w-1/4 mx-2 flex flex-col justify-end h-full z-10 cursor-pointer">
+                            <div class="w-full bg-[#7a2828] rounded-t-lg transition-all duration-300 hover:opacity-80 bar-animate bar-delay-2 relative shadow-md" style="height: 21.4%;">
+                                <div class="absolute -top-12 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs font-bold py-1 px-3 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50">
+                                    TB: 7.5 Triệu
+                                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full border-4 border-transparent border-t-gray-800"></div>
+                                </div>
+                            </div>
+                            <span class="mt-3 text-xs md:text-sm font-bold text-gray-600 text-center block">Xuyên tạc</span>
+                        </div>
+
+                        <div class="relative group w-1/4 mx-2 flex flex-col justify-end h-full z-10 cursor-pointer">
+                            <div class="w-full bg-[#a73737] rounded-t-lg transition-all duration-300 hover:opacity-80 bar-animate bar-delay-3 relative shadow-md" style="height: 71.4%;">
+                                <div class="absolute -top-12 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs font-bold py-1 px-3 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap pointer-events-none z-50">
+                                    TB: 25 Triệu
+                                    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-full border-4 border-transparent border-t-gray-800"></div>
+                                </div>
+                            </div>
+                            <span class="mt-3 text-xs md:text-sm font-bold text-gray-600 text-center block">Sao chép (CN)</span>
+                        </div>
+
+                    </div>
+                    
+                    <div class="mt-8 bg-gray-50 p-4 rounded-lg text-sm text-gray-600 text-justify">
+                        <p class="mb-2 font-bold text-[#a73737]">Lưu ý quan trọng:</p>
+                        <p>Sở hữu trí tuệ là tài sản vô cùng quan trọng đối với mỗi doanh nghiệp, đóng vai trò then chốt trong việc xây dựng thương hiệu và bảo vệ các sáng tạo độc quyền. Việc quản lý và bảo vệ sở hữu trí tuệ không chỉ giúp ngăn chặn sao chép, xâm phạm mà còn gia tăng giá trị thương hiệu trên thị trường.</p>
+                        <p class="mt-2">Với kinh nghiệm chuyên sâu và đội ngũ luật sư giàu năng lực, Công ty Luật ACC cung cấp dịch vụ toàn diện từ tư vấn, đăng ký, đến giải quyết tranh chấp và khai thác quyền sở hữu trí tuệ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-[#1a1a1a] to-[#2e1010] z-0"></div>
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-[#a73737] opacity-5 transform skew-x-12 z-0 pointer-events-none"></div>
+
+        <div class="container mx-auto px-8 md:px-16 relative z-10">
+            <div class="text-center text-white mb-12">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">Liên Hệ Ngay Với Công Ty Luật ACC</h2>
+                <div class="w-24 h-1 bg-[#a73737] mx-auto rounded-full mb-6"></div>
+                <p class="text-gray-300 max-w-2xl mx-auto text-lg leading-relaxed">
+                    Sở hữu trí tuệ là tài sản vô cùng quan trọng. Đừng để sự chậm trễ làm mất đi giá trị thương hiệu của bạn. Đội ngũ ACC sẵn sàng hỗ trợ 24/7.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-[#a73737] hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-red-500 to-[#a73737] flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition duration-300">
+                        <i data-lucide="phone" class="text-white w-8 h-8"></i>
+                    </div>
+                    <p class="text-sm text-gray-400 uppercase tracking-widest font-semibold mb-2">Tư Vấn Miễn Phí</p>
+                    <a href="tel:19003330" class="text-3xl font-bold text-white hover:text-[#ff4d4d] transition">1900 3330</a>
+                    <p class="text-sm text-gray-400 mt-2">Hỗ trợ 24/7 trên toàn quốc</p>
+                </div>
+                <div class="group bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-[#a73737] hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition duration-300">
+                        <i data-lucide="map-pin" class="text-white w-8 h-8"></i>
+                    </div>
+                    <p class="text-sm text-gray-400 uppercase tracking-widest font-semibold mb-2">Hệ Thống Văn Phòng</p>
+                    <p class="text-xl font-bold text-white">Hà Nội • TP.HCM • Đà Nẵng</p>
+                    <p class="text-sm text-gray-400 mt-2">Và nhiều tỉnh thành khác</p>
+                </div>
+                <div class="group bg-white/5 backdrop-blur-md p-8 rounded-2xl border border-white/10 hover:border-[#a73737] hover:bg-white/10 transition-all duration-300 transform hover:-translate-y-2 text-center">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-600 flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition duration-300">
+                        <i data-lucide="mail" class="text-white w-8 h-8"></i>
+                    </div>
+                    <p class="text-sm text-gray-400 uppercase tracking-widest font-semibold mb-2">Email Hỗ Trợ</p>
+                    <a href="mailto:info@accgroup.vn" class="text-xl font-bold text-white hover:text-yellow-400 transition">info@accgroup.vn</a>
+                    <p class="text-sm text-gray-400 mt-2">Phản hồi trong vòng 24h</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            // Scroll Event for "Scroll To Top" button
+            window.addEventListener('scroll', () => {
+                const btn = document.getElementById('scrollToTopBtn');
+                if (window.pageYOffset > 300) {
+                    btn.classList.remove('hidden');
+                } else {
+                    btn.classList.add('hidden');
+                }
+            });
+        });
+
+        // --- ACCORDION LOGIC ---
+        function toggleAccordion(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('.icon-chevron');
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px';
+
+            if (isOpen) {
+                content.style.maxHeight = '0px';
+                content.style.opacity = '0';
+                icon.innerHTML = '<polyline points="6 9 12 15 18 9"></polyline>'; // Chevron down
+                icon.classList.remove('text-[#a73737]');
+                icon.classList.add('text-gray-400');
+            } else {
+                content.style.maxHeight = '500px'; // Approx height
+                content.style.opacity = '1';
+                icon.innerHTML = '<polyline points="18 15 12 9 6 15"></polyline>'; // Chevron up
+                icon.classList.add('text-[#a73737]');
+                icon.classList.remove('text-gray-400');
+            }
+            // Refresh icon
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
